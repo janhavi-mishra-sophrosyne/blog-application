@@ -1,0 +1,846 @@
+/* ===============================
+   VARIABLES
+=============================== */
+$primary-teal: #008080;
+$light-green: #b9e7e7;
+$gray-light: #f5f5f5;
+$text-dark: #333;
+$text-light: #555;
+$white: #fff;
+$border-radius: 10px;
+$transition: 0.3s;
+
+/* ===============================
+   GLOBAL STYLES
+=============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: $transition;
+}
+
+/* ===============================
+   APP CONTAINER FULL WIDTH
+=============================== */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(202, 183, 231, 0.522);
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+
+    /* ===============================
+       NAVBAR
+    =============================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: $white;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo img {
+          width: 150px;
+        }
+
+        .links {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+
+          h6 {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: $transition;
+
+            &:hover {
+              color: $primary-teal;
+            }
+          }
+
+          span {
+            cursor: pointer;
+            font-weight: 500;
+          }
+
+          .write {
+            background-color: $light-green;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            border: 1px solid $white;
+            transition: $transition;
+
+            &:hover {
+              color: $primary-teal;
+              background-color: $white;
+              border: 1px solid $primary-teal;
+            }
+          }
+        }
+      }
+    }
+
+    /* ===============================
+       FOOTER
+    =============================== */
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background-color: $light-green;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+
+      img {
+        height: 50px;
+      }
+
+      b {
+        font-weight: bold;
+      }
+    }
+
+    /* ===============================
+       AUTH PAGES (LOGIN / REGISTER)
+    =============================== */
+    .auth {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: $light-green;
+
+      h1 {
+        font-size: 26px;
+        color: $primary-teal;
+        margin-bottom: 25px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        padding: 40px 30px;
+        background-color: $white;
+        border-radius: $border-radius;
+        width: 100%;
+        max-width: 350px;
+        gap: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        input {
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          transition: $transition;
+
+          &:focus {
+            border-color: $primary-teal;
+            outline: none;
+          }
+        }
+
+        button {
+          padding: 12px;
+          border: none;
+          border-radius: 5px;
+          background-color: $primary-teal;
+          color: $white;
+          font-weight: 500;
+
+          &:hover {
+            background-color: darken($primary-teal, 10%);
+          }
+        }
+
+        p {
+          font-size: 12px;
+          color: red;
+          text-align: center;
+        }
+
+        span {
+          font-size: 12px;
+          text-align: center;
+
+          a {
+            color: $primary-teal;
+            font-weight: 500;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    /* ===============================
+       HOME PAGE
+    =============================== */
+    .home {
+      margin-top: 50px;
+
+      .posts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+
+        .post {
+          display: flex;
+          flex-direction: column;
+          background-color: $white;
+          border-radius: $border-radius;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          overflow: hidden;
+          transition: transform $transition, box-shadow $transition;
+
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+          }
+
+          .img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          }
+
+          .content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            h1 {
+              font-size: 20px;
+              color: $text-dark;
+            }
+
+            p {
+              font-size: 14px;
+              color: $text-light;
+              line-height: 1.5;
+            }
+
+            button {
+              width: max-content;
+              padding: 8px 16px;
+              border: 1px solid $primary-teal;
+              background-color: $white;
+              color: $primary-teal;
+              border-radius: 5px;
+              font-weight: 500;
+
+              &:hover {
+                background-color: $primary-teal;
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* ===============================
+       SINGLE PAGE
+    =============================== */
+    .single {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+
+      .content {
+        flex: 3;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        img {
+          width: 100%;
+          border-radius: $border-radius;
+          object-fit: cover;
+          max-height: 400px;
+        }
+
+        .user {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          font-size: 14px;
+
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          span {
+            font-weight: bold;
+          }
+        }
+
+        .edit {
+          display: flex;
+          gap: 10px;
+
+          img {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        h1 {
+          font-size: 28px;
+          color: $text-dark;
+        }
+
+        p {
+          line-height: 1.8;
+          font-size: 16px;
+          color: $text-light;
+          text-align: justify;
+        }
+      }
+
+      /* ===============================
+         STYLISH MENU
+      =============================== */
+      .menu {
+        flex: 1.2;
+        min-width: 250px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 20px;
+
+        h1 {
+          font-size: 18px;
+          color: $text-dark;
+          font-weight: 600;
+          border-bottom: 2px solid $primary-teal;
+          padding-bottom: 5px;
+        }
+
+        .post {
+          display: flex;
+          flex-direction: column;
+          border-radius: $border-radius;
+          overflow: hidden;
+          background-color: $white;
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+          transition: transform $transition, box-shadow $transition;
+
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+          }
+
+          img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            transition: transform $transition;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+
+          h2 {
+            font-size: 14px;
+            color: $text-dark;
+            padding: 10px 15px 5px 15px;
+            font-weight: 500;
+            line-height: 1.2;
+          }
+
+          button {
+            margin: 0 15px 15px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: $primary-teal;
+            color: $white;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background-color $transition, transform $transition;
+
+            &:hover {
+              background-color: darken($primary-teal, 10%);
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        @media (max-width: 768px) {
+          flex: 1;
+          min-width: 100%;
+        }
+      }
+    }
+
+    /* ===============================
+       WRITE PAGE
+    =============================== */
+    .add {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 30px;
+      padding: 20px 0px;
+      .content {
+        flex: 3;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        input {
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+
+        .editorContainer {
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          overflow: auto;
+          height: 300px;
+
+          .editor {
+            height: 100%;
+          }
+        }
+      }
+
+      .menu {
+        flex: 1.2;
+        min-width: 250px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        .item {
+          border: 1px solid #ccc;
+          padding: 15px;
+          border-radius: $border-radius;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          background-color: $white;
+
+          h1 {
+            font-size: 16px;
+            color: $text-dark;
+          }
+
+          .file {
+            text-decoration: underline;
+            cursor: pointer;
+            color: $primary-teal;
+          }
+
+          .buttons {
+            display: flex;
+            gap: 10px;
+
+            button:first-child {
+              flex: 1;
+              padding: 8px;
+              border: 1px solid $primary-teal;
+              background-color: $white;
+              color: $primary-teal;
+              border-radius: 5px;
+            }
+
+            button:last-child {
+              flex: 1;
+              padding: 8px;
+              border: none;
+              background-color: $primary-teal;
+              color: $white;
+              border-radius: 5px;
+            }
+
+            button:hover {
+              opacity: 0.9;
+            }
+          }
+
+          .cat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: $primary-teal;
+          }
+        }
+      }
+    }
+
+    /* ===============================
+       MEDIA QUERIES
+    =============================== */
+    @media (max-width: 768px) {
+      .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .home .posts {
+        gap: 30px;
+      }
+
+      .single {
+        flex-direction: column;
+      }
+
+      .add {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .auth form {
+        width: 90%;
+        padding: 30px 20px;
+      }
+
+      .navbar .links {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+  }
+}
+/* ===============================
+   WRITE PAGE (STYLISH VERSION)
+=============================== */
+.add {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+  padding: 20px;
+
+  .content {
+    flex: 3;
+    min-width: 300px;
+    background: $white;
+    border-radius: $border-radius;
+    padding: 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    input {
+      font-size: 20px;
+      font-weight: 600;
+      border: none;
+      border-bottom: 2px solid #ddd;
+      padding: 10px 5px;
+      transition: $transition;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-teal;
+      }
+    }
+
+    .editorContainer {
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 400px;
+      transition: $transition;
+
+      &:focus-within {
+        border-color: $primary-teal;
+        box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.15);
+      }
+
+      .editor {
+        height: 100%;
+        .ql-toolbar {
+          border: none;
+          background-color: #f8f9fa;
+        }
+        .ql-container {
+          border: none;
+          font-size: 16px;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+
+  .menu {
+    flex: 1.2;
+    min-width: 270px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: sticky;
+    top: 90px;
+    align-self: flex-start;
+
+    .item {
+      background-color: $white;
+      padding: 20px;
+      border-radius: $border-radius;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-3px);
+      }
+
+      h1 {
+        font-size: 18px;
+        color: $text-dark;
+        font-weight: 600;
+        border-bottom: 2px solid $light-green;
+        padding-bottom: 5px;
+      }
+
+      span {
+        font-size: 14px;
+        color: $text-light;
+      }
+
+      .file {
+        cursor: pointer;
+        text-align: center;
+        color: $primary-teal;
+        font-weight: 500;
+        background-color: rgba(0, 128, 128, 0.05);
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: rgba(0, 128, 128, 0.1);
+        }
+      }
+
+      .buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+
+        button {
+          flex: 1;
+          padding: 10px 0;
+          font-weight: 500;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+
+          &:first-child {
+            background-color: $white;
+            border: 1px solid $primary-teal;
+            color: $primary-teal;
+
+            &:hover {
+              background-color: $primary-teal;
+              color: $white;
+            }
+          }
+
+          &:last-child {
+            background-color: $primary-teal;
+            border: none;
+            color: $white;
+            box-shadow: 0 4px 10px rgba(0, 128, 128, 0.2);
+
+            &:hover {
+              background-color: darken($primary-teal, 8%);
+              transform: translateY(-2px);
+            }
+          }
+        }
+      }
+
+      .cat {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: $text-dark;
+
+        input[type="radio"] {
+          accent-color: $primary-teal;
+        }
+
+        label {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 10px;
+
+    .menu {
+      position: static;
+      width: 100%;
+    }
+
+    .content {
+      box-shadow: none;
+      padding: 15px;
+    }
+  }
+}
+
+/* NAVBAR BASE */
+.navbar {
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LEFT: Logo */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo {
+  height: 45px;
+}
+
+.brand-name {
+  font-size: 1.1rem;
+  color: #004aad;
+  font-weight: 600;
+}
+
+/* MIDDLE: Menu Links */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: #222;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #00a8cc;
+}
+
+/* RIGHT: User + Write Icon */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.username {
+  font-weight: 500;
+  color: #333;
+}
+
+.logout-btn {
+  cursor: pointer;
+  background: #00a8cc;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #007b9e;
+}
+
+.write-btn {
+  background: #e7f6fb;
+  border-radius: 50%;
+  padding: 8px;
+  color: #00a8cc;
+  transition: all 0.3s ease;
+}
+
+.write-btn:hover {
+  background: #00a8cc;
+  color: #fff;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+}
